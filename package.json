@@ -1,15 +1,8 @@
 {
-  "name": "gestion_des_packages_javascript",
-  "version": "1.0.0",
-  "description": "**Gestion des Packages JavaScript avec php et sql**",
-  "main": "global.js",
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  },
   "scripts": {
     "dev": "npx tailwindcss -i ./assets/css/styles.css  -o ./assets/css/tailwind/output.css --watch"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.4.15"
   }
 }

@@ -9,8 +9,8 @@
 ## Links
 
 - **GitHub Repository:** [View on GitHub]()
-- **UML Link:**[View Backlog](https://lucid.app/lucidchart/eeb5c7da-948c-43cc-98ba-277cba793164/edit?viewport_loc=-1363%2C581%2C2748%2C1271%2Cz3Qx-4DuMgZb&invitationId=inv_67047c66-eedb-41ab-a3a0-603daeb2c315)
-- **ERD Link:** [View Live](https://dbdiagram.io/d/Package-Javascript-6755b6cbe9daa85aca089f85)
+- **UML Link:**[View UML](https://lucid.app/lucidchart/eeb5c7da-948c-43cc-98ba-277cba793164/edit?viewport_loc=-1363%2C581%2C2748%2C1271%2Cz3Qx-4DuMgZb&invitationId=inv_67047c66-eedb-41ab-a3a0-603daeb2c315)
+- **ERD Link:** [View ERD](https://dbdiagram.io/d/Package-Javascript-6755b6cbe9daa85aca089f85)
 - **Color Palette:** [View Color Palette]()
 
 ### créé : 06/12/24
