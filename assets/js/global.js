@@ -114,3 +114,26 @@ async function handleAuthorSubmission(event) {
     }
 }
 // Function to add authors end
+
+//Function to populate the authors in package form start
+async function fetchAndPopulateAuthors() {
+    try {
+        const response = await fetch("assets/includes/addauthor.php");
+        const authors = await response.json();
+
+        const authorSelect = document.getElementById("authorId");
+        // Clear existing options except the first one
+        authorSelect.length = 1;
+
+        // Populate dropdown with authors
+        authors.forEach((author) => {
+        const option = document.createElement("option");
+        option.value = author.author_id;
+        option.textContent = author.name;
+        authorSelect.appendChild(option);
+        });
+    } catch (error) {
+        console.error("Error fetching authors:", error);
+    }
+}
+//Function to populate the authors in package form end
