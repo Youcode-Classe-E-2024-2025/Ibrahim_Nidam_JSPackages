@@ -8,13 +8,50 @@
 
 ## Links
 
-- **GitHub Repository:** [View on GitHub](https://github.com/Youcode-Classe-E-2024-2025/Ibrahim_Nidam_JSPackages.git)
-- **UML Link:**[View UML](https://lucid.app/lucidchart/eeb5c7da-948c-43cc-98ba-277cba793164/edit?viewport_loc=-1363%2C581%2C2748%2C1271%2Cz3Qx-4DuMgZb&invitationId=inv_67047c66-eedb-41ab-a3a0-603daeb2c315)
-- **ERD Link:** [View ERD](https://dbdiagram.io/d/Package-Javascript-6755b6cbe9daa85aca089f85)
+- **GitHub Repository :** [View on GitHub](https://github.com/Youcode-Classe-E-2024-2025/Ibrahim_Nidam_JSPackages.git)
+- **UML Link :** [View UML](https://lucid.app/lucidchart/eeb5c7da-948c-43cc-98ba-277cba793164/edit?viewport_loc=-1363%2C581%2C2748%2C1271%2Cz3Qx-4DuMgZb&invitationId=inv_67047c66-eedb-41ab-a3a0-603daeb2c315)
+- **ERD Link :** [View ERD](https://dbdiagram.io/d/Package-Javascript-6755b6cbe9daa85aca089f85)
 
 ### créé : 06/12/24
 
 Vous êtes chargé de concevoir une solution complète basée sur un schéma de base de données fourni. Votre projet devra inclure la modélisation, la configuration de l’environnement, et le développement de fonctionnalités essentielles.
+
+
+# Configuration et Exécution du Projet
+
+### Prérequis
+* **Node.js** et **npm** installés (téléchargez [Node.js](https://nodejs.org/)).
+* **Laragon** installé (téléchargez [Laragon](https://laragon.org/download/)).
+
+### Étapes d’installation
+
+1. **Cloner le projet** :
+   - Ouvrir un terminal et exécuter :  
+     `git clone https://github.com/Youcode-Classe-E-2024-2025/Ibrahim_Nidam_JSPackages.git`
+
+2. **Placer le projet dans le dossier Laragon** :
+   - Cliquez sur le bouton **Root** dans Laragon pour ouvrir le dossier `www` (par défaut, `C:\laragon\www`).
+   - Le chemin de votre projet devrait être `C:\laragon\www\Ibrahim_Nidam_JSPackages`.
+
+3. **Configurer la base de données** :
+   - Faites un clic droit sur **Laragon**, puis allez dans **Tools** > **Quick Add** et téléchargez **phpMyAdmin** et **MySQL**.
+   - Ouvrir **phpMyAdmin** via Laragon :
+     - Dans Laragon, cliquez sur le bouton **Database** pour accéder à phpMyAdmin.
+     - Créez une base de données `packages_js_db` et importez le fichier `Package_Javascript.sql` (disponible dans le dossier `/assets/data/`).
+
+
+4. **Installer les dépendances Node.js** :
+   - Ouvrez un terminal dans le dossier du projet cloné.
+   - Exécutez :  `npm install` or `npm i`
+
+5. **Configurer Laragon pour le serveur local** :
+   - Lancez **Laragon** et démarrez les services **Apache** et **MySQL**,en Clickant sur **Start All**.
+
+
+6. **Exécuter le projet** :
+   - Une fois les services lancés dans Laragon, cliquez sur le bouton **Web** pour accéder à `http://localhost/Ibrahim_Nidam_JSPackages` dans votre navigateur.
+
+
 
 ## **Contexte du projet:**
 
