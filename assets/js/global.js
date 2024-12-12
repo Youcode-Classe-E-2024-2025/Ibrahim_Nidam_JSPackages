@@ -138,3 +138,92 @@ async function fetchAndPopulateAuthors() {
 }
 //Function to populate the authors in package form end
 
+// Function to fetch and display packages start
+async function fetchAndDisplayPackages() {
+    try {
+        // Fetch versions and packages start
+        const [versionsResponse, packagesResponse] = await Promise.all([
+        fetch("assets/includes/getversions.php"),
+        fetch("assets/includes/getpackages.php")
+        ]);
+        const versions = await versionsResponse.json();
+        const packages = await packagesResponse.json();
+        // Fetch versions and packages end
+
+        // Display packages start
+        const packagesContainer = document.getElementById("packagesListContainer");
+        packagesContainer.classList.add("flex", "gap-10", "flex-wrap");
+        packagesContainer.innerHTML = "";
+
+        packages.forEach(pkg => {
+        const latestVersion = latestVersions[pkg.package_id];
+        const packageElement = document.createElement("div");
+        packageElement.classList.add("package-item", "bg-gray-700", "rounded", "p-4", "mb-4");
+        packageElement.innerHTML = `
+            <h4 class="font-bold text-white">${pkg.name}</h4>
+            <p class="text-gray-300">${pkg.description}</p>
+            <p class="text-sm text-gray-400">Author: ${pkg.author_name}</p>
+            <p class="text-sm text-gray-400">Version: ${latestVersion ? latestVersion.version_number : '1.0.0'}</p>
+            <p class="text-xs text-gray-500">Created: ${pkg.creation_date}</p>
+        `;
+        packagesContainer.appendChild(packageElement);
+        // Display packages end
+        });
+    } catch (error) {
+        console.error("Error fetching packages:", error);
+    }
+}
+// Function to fetch and display packages end
+
+// Function to handle package submission start
+async function handlePackageSubmission(event) {
+    event.preventDefault();
+
+    const packageName = document.getElementById("packageName").value;
+    const packageDescription = document.getElementById("packageDescription").value;
+    const authorId = document.getElementById("authorId").value;
+
+    try {
+        const response = await fetch("assets/includes/addpackage.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+            packageName,
+            packageDescription,
+            authorId,
+        }).toString(),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+        fetchAndDisplayPackages();
+        event.target.reset();
+        packageForm.classList.remove("active");
+        } else {
+        throw new Error(result.error || "Failed to add package");
+        }
+    } catch (error) {
+        console.error("Error adding package:", error);
+        alert("Failed to add package. Please try again.");
+    }
+}
+// Function to handle package submission end
+
+// Add event listeners to form submissions start
+document.querySelector("#packageForm form").addEventListener("submit", handlePackageSubmission);
+document.querySelector("#versionForm form").addEventListener("submit", handleVersionSubmission);
+document.querySelector("#authorForm form").addEventListener("submit", handleAuthorSubmission);
+// Add event listeners to form submissions end
+
+// Functions to start on load start
+document.addEventListener("DOMContentLoaded", () => {
+    fetchAndDisplayPackages();
+    fetchAndPopulatePackages();
+    fetchAndDisplayVersions();
+    fetchAndPopulateAuthors();
+    fetchAndDisplayAuthors();
+});
+// Functions to start on load end
