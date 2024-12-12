@@ -9,7 +9,6 @@
 
         <title>Javacript Package Manager</title>
 
-        <!-- <link rel="stylesheet" href="assets/css/tailwind/output.css" /> -->
         <link rel="stylesheet" href="assets/css/styles.css">
         <link rel="icon" href="assets/images/Favicon/javascript-js-seeklogo.svg" type="image/x-icon" />
         <script src="https://cdn.tailwindcss.com" defer></script>
