@@ -29,7 +29,7 @@ CREATE TABLE package_authors (
   author_id int NOT NULL,
   PRIMARY KEY (package_id, author_id)
 );
- 
+
 CREATE INDEX package_authors_index_0 ON package_authors (package_id);
 
 CREATE INDEX package_authors_index_1 ON package_authors (author_id);

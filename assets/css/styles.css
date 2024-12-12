@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form-container {
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+.form-container.active {
+    max-height: 1000px;
+    opacity: 1;
+    padding: 1rem;
+}
