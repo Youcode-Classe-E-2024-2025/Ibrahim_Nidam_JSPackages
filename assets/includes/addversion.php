@@ -22,12 +22,16 @@ try {
             'message' => 'Version added successfully',
             'versionId' => $db->lastInsertId()
         ]);
+        exit;
     } else {
         throw new Exception("Unsupported request method");
     }
 } catch (Exception $e) {
     ob_clean();
     http_response_code(400);
-    echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+    echo json_encode([
+        'success' => false,
+        'error' => $e->getMessage()
+    ]);
+    exit;
 }
-?>

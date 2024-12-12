@@ -6,9 +6,13 @@ header('Content-Type: application/json');
 try {
     // Handle GET request for all authors start
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if (!$db) {
+            throw new Exception("Database connection failed");
+        }
         $stmt = $db->prepare("SELECT * FROM authors");
         $stmt->execute();
         $authors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ob_clean();
         echo json_encode($authors);
         exit;
     }
@@ -25,18 +29,24 @@ try {
 
         $stmt = $db->prepare("SELECT COUNT(*) FROM authors WHERE email = ?");
         $stmt->execute([$email]);
-        if ($stmt->fetchColumn()) {
+        $emailExists = $stmt->fetchColumn();
+
+        if ($emailExists) {
             throw new Exception("The email address is already in use");
         }
 
         $stmt = $db->prepare("INSERT INTO authors (name, email) VALUES (?, ?)");
-        if (!$stmt->execute([$name, $email])) {
-            throw new Exception("Failed to insert author.");
-        }
+        $result = $stmt->execute([$name, $email]);
 
-        echo json_encode(['success' => true, 'message' => 'Author added successfully']);
-        exit;
+        if ($result) {
+            ob_clean();
+            echo json_encode([
+                'success' => true,
+                'message' => 'Author added successfully'
+            ]);
+            exit;
     }
+}
     // Handle POST request to add authors end
 
 } catch (Exception $e) {

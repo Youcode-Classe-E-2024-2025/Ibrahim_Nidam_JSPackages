@@ -1,5 +1,7 @@
 <?php
+ob_start();
 require_once "../data/database.php";
+
 header('Content-Type: application/json');
 
 try {
@@ -23,7 +25,7 @@ try {
             $stmt->execute([$packageId, $authorId]);
 
             $db->commit();
-
+            ob_clean();
             echo json_encode([
                 'success' => true,
                 'message' => 'Package added successfully',
@@ -38,6 +40,7 @@ try {
         throw new Exception("Unsupported request method");
     }
 } catch (Exception $e) {
+    ob_clean();
     http_response_code(400);
     echo json_encode([
         'success' => false,
